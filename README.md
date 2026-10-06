@@ -52,7 +52,35 @@
 
 ## サイト環境情報
 
-- next: v14.0.3
-- react": ^18
-- node: v21.3.0
-- デプロイ: vercel
+- Next.js: 16.3.8（2026-10-06 時点の安定版）
+- React / React DOM: 19.3.0
+- Node.js: 24.x（`.nvmrc` / `package.json` に指定）
+- ルーティング: Pages Router
+- デプロイ先: Vercel
+
+## 開発・検証
+
+```sh
+nvm use
+npm ci
+npm run dev
+```
+
+```sh
+# lint・型チェック・本番ビルド・HTTP スモークテスト
+npm run check
+
+# 本番ビルドに対する Chromium の desktop / mobile E2E テスト
+npx playwright install chromium
+npm run test:e2e
+```
+
+`npm run check` は全 4 ページ、共通ナビゲーション、背景画像、静的アセット、画像最適化、404 応答を検証します。E2E テストは画面表示、hydration エラー、リンク遷移、戻る・進む、プロフィール画像、入力欄を確認します。GitHub Actions でも両方を実行します。
+
+Next.js 16 では `next lint` が廃止され、本番ビルドに lint は含まれません。このため ESLint CLI を独立して実行しています。ESLint は `eslint-config-next` の React プラグインが対応する 9 系を使用しています。
+
+Vercel に反映する際は Node.js 24.x でビルドされることを確認してください。ブランチや PR の作成だけでは、本番サイトへの反映は完了しません。
+
+### 既存の仕様
+
+Contact のフォームには送信処理がありません。お問い合わせは表示されている SNS リンクをご利用ください。今回の更新では送信先や外部サービスは追加していません。

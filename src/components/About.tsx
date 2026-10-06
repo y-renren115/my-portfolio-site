@@ -81,8 +81,9 @@ const About = () => {
           <Image
             src="/personalIcon.png"
             alt="プロフィール画像"
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="400px"
+            className="object-cover"
           />
         </div>
         <div className="mt-10">
