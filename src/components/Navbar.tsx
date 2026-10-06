@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import '../styles/globals.css';
 import DescriptionIcon from '@mui/icons-material/Description';
 
 const Navbar = () => {
@@ -15,17 +14,17 @@ const Navbar = () => {
         <nav>
           <ul className="flex space-x-4">
             <li>
-              <Link href="/about" passHref>
+              <Link href="/about">
                 <span className="font-bold hover:underline cursor-pointer">About</span>
               </Link>
             </li>
             <li>
-              <Link href="/works" passHref>
+              <Link href="/works">
                 <span className="font-bold hover:underline cursor-pointer">Works</span>
               </Link>
             </li>
             <li>
-              <Link href="/contact" passHref>
+              <Link href="/contact">
                 <span className="font-bold hover:underline cursor-pointer">Contact</span>
               </Link>
             </li>
